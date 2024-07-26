@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Projects - AuXion</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <script src="/assets/js/main.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md sticky-top navbar-shrink py-3 navbar-light" id="mainNav">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bezier">
+                        <path fill-rule="evenodd" d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"></path>
+                        <path d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z"></path>
+                    </svg></span><span>AuXion</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" id="allBidsNav">Your Auctions</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" id="newBidNav">New Auction</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" id="yourPurchasesNav">Your Purchases</a></li>
+                        </ul><a class="btn btn-primary shadow" role="button" href="/login" id="loginBtn">Login</a><a class="btn shadow btn-success" role="button" href="signup" id="signupBtn">Sign up</a>
+                        <a class="btn btn-danger shadow" role="button" href="/logout" id="logoutBtn">Log out</a>
+                    </div>
+        </div>
+    </nav>
+    <section class="py-5" id="allBidsSection">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">Your Auctions</h2>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;" id="bids-container">
+
+            </div>
+        </div>
+    </section>
+    <section class="py-5" id="newBidSection" style="display:none;">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">New Auction</h2>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-1 mx-auto" style="max-width: 600px;">
+                <form id="newBidForm">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class="form-control" type="text" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="image_url">Image URL</label>
+                        <input class="form-control" type="url" id="image_url" name="image_url" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="min_price">Minimum Price</label>
+                        <input class="form-control" type="number" id="min_price" name="min_price" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="end_timestamp">End Date & Time</label>
+                        <input class="form-control" type="datetime-local" id="end_timestamp" name="end_timestamp" required>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+    <section class="py-5" id="yourPurchasesSection" style="display:none;">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">Your Purchases</h2>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;" id="purchases-container">
+
+            </div>
+        </div>
+    </section>
+    <script>
+        function setMinDateTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            // Format as YYYY-MM-DDTHH:MM
+            const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            document.getElementById('end_timestamp').setAttribute('min', minDateTime);
+        }
+
+        // Set the minimum date-time when the page loads
+        window.onload = setMinDateTime;
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch the bids data
+            fetch('/api/bids')
+                .then(response => response.json())
+                .then(bids => {
+                    const bidsContainer = document.getElementById('bids-container');
+
+                    bids.forEach(bid => {
+                        // Create a new column element
+                        const colDiv = document.createElement('div');
+                        colDiv.className = 'col mb-4';
+
+                        // Determine if the bid is sold
+                        const isSold = bid.status === 'sold';
+
+                        // Create the HTML structure
+                        colDiv.innerHTML = `
+                            <div>
+                                <a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="${bid.image_url}" style="height: 250px;"></a>
+                                <div class="py-4">
+                                    <h4 class="fw-bold">${bid.title}</h4>
+                                    <p class="text-muted">
+                                        Description: ${bid.description}<br>
+                                        Highest Bid: ${Math.max(...(bid.bidders.length > 0 ? bid.bidders.map(b => b.price) : [0]))}<br>
+                                        Date Ending: ${new Date(bid.end_timestamp).toLocaleDateString()}
+                                    </p>
+                                    ${isSold ? '' : `
+                                        <button class="btn btn-success" type="button" data-id="${bid.bid_id}" data-action="accept">Accept Bid</button>
+                                        <button class="btn btn-primary" type="button" data-id="${bid.bid_id}" data-action="edit">Edit</button>
+                                        <button class="btn btn-danger" type="button" data-id="${bid.bid_id}" data-action="delete">Delete</button>
+                                    `}
+                                </div>
+                            </div>
+                        `;
+
+                        // Append the new column to the bids container
+                        bidsContainer.appendChild(colDiv);
+                    });
+
+                    // Add event listeners for buttons
+                    bidsContainer.addEventListener('click', function(event) {
+                        const target = event.target;
+                        if (target.tagName === 'BUTTON') {
+                            const bidId = target.getAttribute('data-id');
+                            const action = target.getAttribute('data-action');
+                            if (bidId && action) {
+                                window.location.href = `/bid/${bidId}?request=${action}`;
+                            }
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching bids:', error));
+
+            // Fetch the purchases data
+            fetch('/api/mypurchases/')
+                .then(response => response.json())
+                .then(purchases => {
+                    const purchasesContainer = document.getElementById('purchases-container');
+
+                    purchases.forEach(purchase => {
+                        // Create a new column element
+                        const colDiv = document.createElement('div');
+                        colDiv.className = 'col mb-4';
+
+                        // Create the HTML structure
+                        colDiv.innerHTML = `
+                            <div>
+                                <a href="#"><img class="rounded img-fluid shadow w-100 fit-cover" src="${purchase.image_url}" style="height: 250px;"></a>
+                                <div class="py-4">
+                                    <h4 class="fw-bold">${purchase.title}</h4>
+                                    <p class="text-muted">
+                                        Description: ${purchase.description}<br>
+                                        Purchase Price: $${purchase.buyer_price}<br>
+                                        Seller: ${purchase.user_started}<br>
+                                    </p>
+                                </div>
+                            </div>
+                        `;
+
+                        // Append the new column to the purchases container
+                        purchasesContainer.appendChild(colDiv);
+                    });
+                })
+                .catch(error => console.error('Error fetching purchases:', error));
+        });
+
+        document.getElementById('allBidsNav').addEventListener('click', function (event) {
+            event.preventDefault();
+            document.getElementById('allBidsSection').style.display = 'block';
+            document.getElementById('newBidSection').style.display = 'none';
+            document.getElementById('yourPurchasesSection').style.display = 'none';
+        });
+
+        document.getElementById('newBidNav').addEventListener('click', function (event) {
+            event.preventDefault();
+            document.getElementById('allBidsSection').style.display = 'none';
+            document.getElementById('newBidSection').style.display = 'block';
+            document.getElementById('yourPurchasesSection').style.display = 'none';
+        });
+
+        document.getElementById('yourPurchasesNav').addEventListener('click', function (event) {
+            event.preventDefault();
+            document.getElementById('allBidsSection').style.display = 'none';
+            document.getElementById('newBidSection').style.display = 'none';
+            document.getElementById('yourPurchasesSection').style.display = 'block';
+        });
+
+        document.getElementById('newBidForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const bid = {
+        title: formData.get('title'),
+        description: formData.get('description'),
+        image_url: formData.get('image_url'),
+        min_price: formData.get('min_price'),
+        end_timestamp: formData.get('end_timestamp'),
+    };
+
+    // Send the bid data to the server
+    fetch('/api/newAuction/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bid)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Optionally, handle the response data here (e.g., show a success message)
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        // Optionally, handle the error here (e.g., show an error message)
+    });
+
+    console.log('New Bid Submitted:', bid);
+    window.location.href = '/';
+});
+
+    </script>
+</body>
+
+</html>
